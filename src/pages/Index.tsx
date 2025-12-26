@@ -16,48 +16,48 @@ const Index = () => {
       {/* Main Content */}
       <main className="flex-1 p-6">
         <div className="max-w-[1600px] mx-auto">
+          {/* Health Metrics Grid - Top Row */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            <HealthMetricCard
+              icon={Heart}
+              label="Heart Rate"
+              value={72}
+              unit="BPM"
+              subtext="Resting • Last 5 min avg"
+              status="normal"
+            />
+            <HealthMetricCard
+              icon={Thermometer}
+              label="Body Temp"
+              value={36.5}
+              unit="°C"
+              subtext="Stable range"
+              status="normal"
+            />
+            <HealthMetricCard
+              icon={ShieldAlert}
+              label="Fall Status"
+              value="Normal"
+              subtext="No incidents today"
+              status="normal"
+            />
+            <HealthMetricCard
+              icon={Smile}
+              label="Emotion"
+              value="—"
+              subtext="Coming Soon"
+              status="normal"
+            />
+          </div>
+
           {/* Main Grid Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
             {/* Left Column - Live Monitoring (60%) */}
-            <div className="lg:col-span-3 space-y-6">
+            <div className="lg:col-span-3">
               <LiveMonitoringPanel />
-              
-              {/* Health Metrics Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <HealthMetricCard
-                  icon={Heart}
-                  label="Heart Rate"
-                  value={72}
-                  unit="BPM"
-                  subtext="Resting • Last 5 min avg"
-                  status="normal"
-                />
-                <HealthMetricCard
-                  icon={Thermometer}
-                  label="Body Temp"
-                  value={36.5}
-                  unit="°C"
-                  subtext="Stable range"
-                  status="normal"
-                />
-                <HealthMetricCard
-                  icon={ShieldAlert}
-                  label="Fall Status"
-                  value="Normal"
-                  subtext="No incidents today"
-                  status="normal"
-                />
-                <HealthMetricCard
-                  icon={Smile}
-                  label="Emotion"
-                  value="—"
-                  subtext="Coming Soon"
-                  status="normal"
-                />
-              </div>
             </div>
 
-            {/* Right Column - Health & Status (40%) */}
+            {/* Right Column - Alerts & Control (40%) */}
             <div className="lg:col-span-2 space-y-6">
               <AlertCard />
               <RobotControlPanel />

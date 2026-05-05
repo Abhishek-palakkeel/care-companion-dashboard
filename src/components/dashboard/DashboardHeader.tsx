@@ -1,7 +1,14 @@
-import { Bot, Bell, Settings, User } from "lucide-react";
+import { Bot, Bell, Settings, User, Stethoscope, LayoutDashboard } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link, useLocation } from "react-router-dom";
+import { cn } from "@/lib/utils";
 
 export function DashboardHeader() {
+  const location = useLocation();
+  const navItems = [
+    { to: "/", label: "Dashboard", icon: LayoutDashboard },
+    { to: "/health-tools", label: "Health Tools", icon: Stethoscope },
+  ];
   return (
     <header className="bg-card border-b border-border px-6 py-4">
       <div className="flex items-center justify-between">
@@ -22,6 +29,24 @@ export function DashboardHeader() {
             <p className="text-sm font-medium text-foreground">Patient: John Smith</p>
             <p className="text-xs text-muted-foreground">Room 204 • Age 78</p>
           </div>
+          <div className="h-8 w-px bg-border" />
+          <nav className="flex items-center gap-1">
+            {navItems.map((item) => (
+              <Link key={item.to} to={item.to}>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className={cn(
+                    "gap-1.5 text-xs",
+                    location.pathname === item.to && "bg-primary/10 text-primary"
+                  )}
+                >
+                  <item.icon className="w-4 h-4" />
+                  {item.label}
+                </Button>
+              </Link>
+            ))}
+          </nav>
           <div className="h-8 w-px bg-border" />
           <div className="text-right">
             <p className="text-sm font-medium text-foreground tabular-nums">14:32:45</p>

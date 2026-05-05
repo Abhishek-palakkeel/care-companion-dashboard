@@ -14,7 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      fall_events: {
+        Row: {
+          chat_id: number | null
+          confirmed: boolean
+          created_at: string
+          dismissed: boolean
+          id: string
+          image_url: string | null
+          message_text: string | null
+          telegram_update_id: number | null
+        }
+        Insert: {
+          chat_id?: number | null
+          confirmed?: boolean
+          created_at?: string
+          dismissed?: boolean
+          id?: string
+          image_url?: string | null
+          message_text?: string | null
+          telegram_update_id?: number | null
+        }
+        Update: {
+          chat_id?: number | null
+          confirmed?: boolean
+          created_at?: string
+          dismissed?: boolean
+          id?: string
+          image_url?: string | null
+          message_text?: string | null
+          telegram_update_id?: number | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
